@@ -4,7 +4,7 @@ import {Module} from '@nestjs/common';
 
 @Module({
     imports:[
-        MongooseModule.forRoot()
+        MongooseModule.forRoot('')
     ]
 })
 export class DatabaseModule{}
