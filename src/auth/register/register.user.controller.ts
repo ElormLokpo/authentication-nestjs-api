@@ -1,15 +1,21 @@
 import {Controller, Body, Post} from '@nestjs/common';
 import { RegisterUserService } from './register.user.service';
+import {ConfigService} from '@nestjs/config';
+import { setMongoURL } from 'src/database/database.service';
 
 
 
 @Controller('auth')
 export class RegisterUserController{
-    constructor(private readonly registeruserservice: RegisterUserService){}
+    constructor(
+        private readonly registeruserservice: RegisterUserService,
+        private readonly configService: ConfigService
+        ){}
 
 
     @Post('register')
     async RegisterUserController(
+        @Body('mongourl') mongourl:string,
         @Body('firstname') firstname:string,
         @Body('lastname') lastname: string,
         @Body('othernames') othernames: string,
@@ -24,6 +30,9 @@ export class RegisterUserController{
         @Body('gender') gender: string,
         @Body('title') title: string 
     ){
+
+        
+        setMongoURL(mongourl);
         const userData = await this.registeruserservice.registerUserService(
             firstname,
             lastname,
