@@ -8,7 +8,7 @@ import { RegisterUserModule } from "./register/register.user.module";
     imports: [
         RegisterUserModule, 
         LoginUserModule,
-        GoogleModule
+      
     ]
 })
 export class AuthModule{}
