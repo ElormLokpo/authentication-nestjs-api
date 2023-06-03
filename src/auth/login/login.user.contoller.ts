@@ -23,7 +23,7 @@ export class LoginUserController{
         return {userData, token};
     }
 
-    @Post('login/username/pin')
+    @Post('login/email/password')
     async EmailPasswordLoginController(
         @Body('mongourl') mongourl:string,
         @Body('email') email:string,

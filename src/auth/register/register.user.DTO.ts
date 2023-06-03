@@ -22,25 +22,30 @@ export const RegisterUserSchema = new mongoose.Schema({
 
 
 RegisterUserSchema.pre('save', async function(){
-    if(this.password || this.pin){
+    if(this.password ){
         const salt = await bcrypt.genSalt(10);
         this.password = await bcrypt.hash(this.password, salt);
+       
+    }
+
+    if(this.pin){
+        const salt = await bcrypt.genSalt(10);
         this.pin = await bcrypt.hash(this.pin, salt);
     }
 })
 
 
 export interface RegisterUserDTO{
-    firstname:string,
-    lastname: string,
-    othernames: string,
-    age: number,
-    email: string,
-    address: string,
-    picture: string,
-    password:string,
-    pin: number,
-    phone: string,
-    gender: string,
-    title: string 
+    firstname?:string,
+    lastname?: string,
+    othernames?: string,
+    age?: number,
+    email?: string,
+    address?: string,
+    picture?: string,
+    password?:string,
+    pin?: number,
+    phone?: string,
+    gender?: string,
+    title?: string 
 }

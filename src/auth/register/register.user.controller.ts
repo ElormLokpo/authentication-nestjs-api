@@ -1,7 +1,7 @@
 import {Controller, Body, Post} from '@nestjs/common';
 import { RegisterUserService } from './register.user.service';
 import {ConfigService} from '@nestjs/config';
-import { setMongoURL } from 'src/database/database.service';
+import { getMongoURL, setMongoURL } from 'src/database/database.service';
 
 
 
@@ -32,7 +32,6 @@ export class RegisterUserController{
     ){
 
         
-        setMongoURL(mongourl);
         const userData = await this.registeruserservice.registerUserService(
             firstname,
             lastname,

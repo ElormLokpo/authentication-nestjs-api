@@ -6,11 +6,11 @@ import { getMongoURL } from './database.service';
 
 @Module({
     imports:[
-        ConfigModule.forRoot({isGlobal:true}),
+     
         MongooseModule.forRootAsync({
-           useFactory: ()=>({
-              uri: getMongoURL() || process.env.MONGO_URL
-           })
+            useFactory: () =>({
+                uri: process.env.MONGO_URL
+            })
         })
     ]
 })
